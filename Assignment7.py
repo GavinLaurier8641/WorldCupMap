@@ -32,7 +32,8 @@ wc_data["Winner Full"] = wc_data["Winner"].map(code_to_country)
 wc_data["Runner Up Full"] = wc_data["Runner Up"].map(code_to_country)
 
 # Create Dashboard
-app = dash.Dash()
+app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div([
     html.H1("World Cup Finals Map", style={"textAlign": "center", "color": "black", 'font-weight': 'bold', "font-family":"Arial black"}),
@@ -186,5 +187,5 @@ def update_choropleth(mode, year):
 
     return fig
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 
